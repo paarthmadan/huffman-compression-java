@@ -24,5 +24,13 @@ public class Node implements Comparable<Node>{
 		return this.frequency - other.frequency;
 	}
 	
+	public char getSymbol(){
+		return symbol;
+	}
+	
+	public int getFrequency(){
+		return frequency;
+	}
+	
 
 }

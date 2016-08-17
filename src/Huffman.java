@@ -36,8 +36,10 @@ public class Huffman {
 			}
 		}
 		
+		System.out.println(pq.toString());
 		
-		return null;
+		
+		return pq.poll();
 	}
 	
 }
