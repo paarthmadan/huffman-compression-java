@@ -22,8 +22,16 @@ public class Huffman {
 		}
 		
 		Node root = buildTree(frequency);
-		System.out.println(root.getFrequency());
-			
+		
+		String [] dictionaryKeys = new String[R];
+		createKeys(dictionaryKeys, root, "");
+		
+		for(int i = 0; i < dictionaryKeys.length; i++){
+			if(!(dictionaryKeys[i] == null)){
+				System.out.println((char)(i) + ": " + dictionaryKeys[i]);
+			}
+		}
+		
 	}
 	
 	public static Node buildTree(int [] frequency){
@@ -38,13 +46,22 @@ public class Huffman {
 		}
 		
 		while(pq.size() > 1){
-			Node left = pq.remove();
 			Node right = pq.remove();
+			Node left = pq.remove();
 			Node parent = new Node('\0', left.getFrequency() + right.getFrequency(), left, right);
 			pq.add(parent);
 		}
 		
 		return pq.poll();
+	}
+	
+	public static void createKeys(String [] keys, Node current, String key){
+		if(current.isLeaf()){
+			keys[current.getSymbol()] = key;
+		}else{
+			createKeys(keys, current.left, key + "0");
+			createKeys(keys, current.right, key + "1");
+		}
 	}
 	
 }
