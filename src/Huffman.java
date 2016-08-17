@@ -22,6 +22,7 @@ public class Huffman {
 		}
 		
 		Node root = buildTree(frequency);
+		System.out.println(root.getFrequency());
 			
 	}
 	
@@ -36,8 +37,12 @@ public class Huffman {
 			}
 		}
 		
-		System.out.println(pq.toString());
-		
+		while(pq.size() > 1){
+			Node left = pq.remove();
+			Node right = pq.remove();
+			Node parent = new Node('\0', left.getFrequency() + right.getFrequency(), left, right);
+			pq.add(parent);
+		}
 		
 		return pq.poll();
 	}
