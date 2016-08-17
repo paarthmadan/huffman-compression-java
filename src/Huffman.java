@@ -1,3 +1,4 @@
+import java.util.PriorityQueue;
 import java.util.Scanner;
 
 public class Huffman {
@@ -19,7 +20,24 @@ public class Huffman {
 		for(int i = 0 ; i < characters.length; i++){
 			frequency[characters[i]]++;
 		}
+		
+		Node root = buildTree(frequency);
 			
+	}
+	
+	public static Node buildTree(int [] frequency){
+		//Create priority queue for nodes
+		PriorityQueue<Node> pq = new PriorityQueue<Node>();
+		
+		for(char i = 0; i < frequency.length; i++){
+			if(frequency[i] > 0){
+				//create leaf nodes, and add it to the priority queue
+				pq.add(new Node(i, frequency[i], null, null));
+			}
+		}
+		
+		
+		return null;
 	}
 	
 }
